@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func createMainNavigationController() -> UINavigationController {
-        let linksVC =  MainViewController()
+        let netWorkManager: ObjectService = NetworkManager()
+        let linksVC =  MainViewController(networkManager: netWorkManager)
         linksVC.tabBarItem = UITabBarItem(title: "Links", image: UIImage(systemName: "link"), tag: 0)
         return UINavigationController(rootViewController: linksVC)
 

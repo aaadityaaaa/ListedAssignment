@@ -13,9 +13,6 @@ protocol ObjectService {
 
 class NetworkManager: ObjectService {
         
-    static let shared = NetworkManager()
-    private init() {}
-        
     func getData(completed: @escaping (Result<Response, ErrorMessage>) -> Void) {
         
         let apiURL = URL(string: "https://api.inopenapp.com/api/v1/dashboardNew")!

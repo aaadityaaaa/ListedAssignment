@@ -9,8 +9,18 @@ import UIKit
 import SwiftUI
 
 final class MainViewController: DataLoadingVC {
-
+    
     private var response: Response? = nil
+    private let networkManager: ObjectService
+    
+    init(networkManager: ObjectService) {
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     private lazy var scrollView: UIScrollView = {
         let view = UIScrollView()
@@ -304,7 +314,7 @@ extension MainViewController {
     
     private func getData() {
         showLoadingView()
-        NetworkManager.shared.getData() { [weak self] result in
+        networkManager.getData() { [weak self] result in
             guard let strongSelf = self else { return }
             strongSelf.dismissLoadingView()
             switch result {
