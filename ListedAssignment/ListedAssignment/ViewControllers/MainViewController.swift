@@ -354,7 +354,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return response?.data.topLinks.count ?? 4
+        if recentLinksCollectionView.isHidden == true {
+            return response?.data.topLinks.count ?? 4
+        } else {
+            return response?.data.recentLinks.count ?? 4
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
