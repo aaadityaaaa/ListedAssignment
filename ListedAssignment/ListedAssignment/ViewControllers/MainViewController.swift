@@ -368,7 +368,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                                clicksAmount: "\(object.totalClicks)")
             return cell
         } else {
-            let cell = topLinksCollectionView.dequeueReusableCell(withReuseIdentifier: LinkCell.reuseID, for: indexPath) as! LinkCell
+            let cell = recentLinksCollectionView.dequeueReusableCell(withReuseIdentifier: LinkCell.reuseID, for: indexPath) as! LinkCell
             guard let object = response?.data.recentLinks[indexPath.row] else { return UICollectionViewCell() }
                 cell.configure(image: object.originalImage,
                                linkName: object.title,
